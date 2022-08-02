@@ -71,7 +71,7 @@ const createTask = (title, completed) => {
 
 };
 
-const updateTask =(id, title, completed) =>{
+const updateTask =(id, title, completed) => {
     const updateEndPoint = [BASE_URL, postsPath, id].join('/');
     const configObject = {
         method: 'PUT',
@@ -90,7 +90,7 @@ const updateTask =(id, title, completed) =>{
             return response.json();
         });
 
-}
+};
 
 const deleteTask = (id) => {
     const delEndPoint = [BASE_URL, postsPath, id].join('/');
@@ -115,7 +115,7 @@ const renderTasks = (tasks, element) => {
 
     element !== undefined ? render(tmp, element) : null;
 
-}
+};
 
 // TEMPLATE
 const generateTaskEntry = (task, { taskEntry, markedTaskEntry, title, edit, deleteTask }) => {
@@ -147,7 +147,7 @@ const generateTaskEntry = (task, { taskEntry, markedTaskEntry, title, edit, dele
             <div>
         </section>
     `;
-}
+};
 
 
 const setUpCardsEventInputBox = cardsElement => {
