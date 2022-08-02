@@ -8,7 +8,7 @@ html {
 *::after {
   box-sizing: inherit;
   text-decoration: none;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
 }
 
@@ -28,23 +28,23 @@ html {
   margin-top: 10rem;
 }
 
-#input__box {
-  display: block;
-  height: 3em;
-  width: 200px;
-  margin-left: 15rem;
-  border: 0.2em solid var(--tan);
-  border-radius: 1rem;
-  padding: 2rem;
-}
-
 #input__submit {
-  border-radius: 2rem;
+  border-radius: 3rem;
   margin-left: 2%;
   width: 8%;
   border: 0.1em solid var(--blue);
   background-color: var(--blue);
   cursor: pointer;
+}
+
+#input__box {
+  display: block;
+  height: 3em;
+  width: 300px;
+  margin-left: 15rem;
+  border: 0.2em solid var(--tan);
+  border-radius: 1rem;
+  padding: 2rem;
 }
 
 .task__edit {
@@ -67,10 +67,10 @@ html {
 
 .task__container {
   display: flex;
-  margin-left: 6vw;
-  min-height: 50vh;
-  width: 50vw;
   flex-direction: column;
+  min-height: 50vh;
+  margin-left: 6vw;
+  width: 55vw;
   margin-top: 5em;
   border: 0.3em solid var(--white);
   border-radius: 0.3em;
@@ -105,13 +105,9 @@ html {
 
 }
 
-
-
 .task__list {
   display: flex;
-  justify-content: center;
-  width: 500px;
-  margin-left: 50rem;
+  margin-left: 35rem;
   margin-right: 25rem;
   min-height: 15rem;
   flex-direction: column;
@@ -121,10 +117,10 @@ html {
   background-color: var(--white);
 }
 
-/* .task__title {
+.task__title {
   flex: 6;
   margin-right: 1em;
-} */
+}
 
 .task__title {
   height: 100%;
@@ -132,8 +128,6 @@ html {
   font-size: 1.3em;
   line-height: 2;
   border: none;
-  flex: 6;
-  margin-right: 1em;
 }
 
 .task__edit {
@@ -155,4 +149,6 @@ html {
   background-color: var(--red);
   cursor: pointer;
 }
+
+
 
