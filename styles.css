@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  margin: 0 auto;
 }
 
 *,
@@ -8,7 +9,7 @@ html {
 *::after {
   box-sizing: inherit;
   text-decoration: none;
-  margin: 0;
+  /* margin: 0 auto; */
   padding: 0;
 }
 
@@ -31,15 +32,15 @@ Arrow Right Icon: <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" 
 .header {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin-top: 10rem;
-  gap:20px;
 }
 
 #input__box {
   display: block;
   height: 3em;
-  width: 35%;
-  margin-left: 35rem;
+  width: 200px;
+  margin-left: 15rem;
   border: 0.2em solid var(--tan);
   border-radius: 1rem;
   padding: 2rem;
@@ -116,7 +117,9 @@ Arrow Right Icon: <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" 
 
 .task__list {
   display: flex;
-  margin-left: 15rem;
+  justify-content: center;
+  width: 500px;
+  margin-left: 50rem;
   margin-right: 25rem;
   min-height: 15rem;
   flex-direction: column;
