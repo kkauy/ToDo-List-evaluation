@@ -168,7 +168,8 @@ const setUpCardsEventTaskEntry = (cardsElement) => {
             const editBox = `<input type="text" id="input__box-edit-${task.id}" 
                 name="create-task" 
                 placeholder="${task.title}"/>`;
-             document.getElementById(`div-${id}`).innerHTML = editBox;
+            const element =  document.getElementById(`div-${id}`)
+            render(editBox, element);
 
         }
         //  Complete
