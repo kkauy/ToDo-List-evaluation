@@ -44,7 +44,7 @@ let taskList = new Task();
 
 // Sort the tasks on list
 const sortTasks = (taskList) => {
-    taskList.sort(function (x, y) {
+    taskList.sort((x, y) => {
         return (x.completed === y.completed) ? 0 : x.completed ? 1 : -1;
     });
 };
