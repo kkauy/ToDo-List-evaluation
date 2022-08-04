@@ -5,9 +5,9 @@ const getTaskList = () => {
   const getEndPoint = [BASE_URL, postsPath].join('/');
   return fetch(getEndPoint).then(response => {
       return response.json();
-  });
+    })
 };
-
+ 
 // DOM selector
 const DomSelectors = {
     root: 'task__list',
@@ -52,7 +52,6 @@ const sortTasks = (taskList) => {
 
 const createTask = (title, completed) => {
     const postsEndPoint = [BASE_URL, postsPath].join('/');
-    // option     
     const configObject = {
         method: 'POST',
         headers:
@@ -65,7 +64,6 @@ const createTask = (title, completed) => {
             completed
         })
     };
-    // (URL,option)     
     fetch(postsEndPoint, configObject)
         .then((response) => {
             return response.json();
@@ -95,8 +93,8 @@ const updateTask =(id, title, completed) => {
 };
 
 const deleteTask = (id) => {
-    const delEndPoint = [BASE_URL, postsPath, id].join('/');
-    return fetch(delEndPoint, {
+    const deleteEndPoint = [BASE_URL, postsPath, id].join('/');
+    return fetch(deleteEndPoint, {
         method: "DELETE",
     }).then(response => response.json());
 };
@@ -109,13 +107,11 @@ const render = (tmp, element) => {
 
 const renderTasks = (tasks, element) => {
     const tmp =
-        tasks !== undefined
-            ? tasks
+        tasks = tasks
                 .map(task => generateTaskEntry(task, DomSelectors.taskSection))
-                .join('')
-            : [];
+                .join('');
 
-    element !== undefined ? render(tmp, element) : null;
+    element = render(tmp, element);
 
 };
 
@@ -124,7 +120,7 @@ const generateTaskEntry = (task, { taskEntry, markedTaskEntry, title, edit, dele
     const switchElement = true ?
         `<h3 id="title-click-${task.id}" style="cursor:grab">${task.title}</h3>` :
         `<input type="text" id="input__box-edit-${task.id}" name="create-task" placeholder=${task.title}/>`;
-
+    console.log(switchElement);
 
     return ` 
         <section class= "${taskEntry}" style= "${task.completed ? "text-decoration: line-through;" : null}">
@@ -166,7 +162,7 @@ const setUpCardsEventTaskEntry = (cardsElement) => {
     cardsElement.addEventListener('click', event => {
         // Delete
         if (event.target.id.startsWith('btn-delete')) {
-            const id = event.target.id.substring(11);
+            const id = +event.target.id.substring(11);
             deleteTask(id);
             window.location.reload();
         }
@@ -177,7 +173,7 @@ const setUpCardsEventTaskEntry = (cardsElement) => {
             const editBox = `<input type="text" id="input__box-edit-${task.id}" 
                 name="create-task" 
                 placeholder="${task.title}"/>`;
-            document.getElementById(`div-${id}`).innerHTML = editBox;
+             document.getElementById(`div-${id}`).innerHTML = editBox;
 
         }
         //  Completed
@@ -211,6 +207,7 @@ const init = () => {
         ".header"
     );
     const taskElement = document.querySelector(`.${DomSelectors.root}`);
+    // console.log(taskElement);
     setUpCardsEventTaskEntry(taskElement);
     setUpCardsEventInputBox(inputElement);
 }
