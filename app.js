@@ -49,10 +49,10 @@ const sortTasks = (taskList) => {
     });
 };
 
-
+//  Create the task: post method
 const createTask = (title, completed) => {
     const postsEndPoint = [BASE_URL, postsPath].join('/');
-    const configObject = {
+    const options= {
         method: 'POST',
         headers:
         {
@@ -64,7 +64,7 @@ const createTask = (title, completed) => {
             completed
         })
     };
-    fetch(postsEndPoint, configObject)
+    fetch(postsEndPoint, options)
         .then((response) => {
             return response.json();
         });
@@ -73,7 +73,8 @@ const createTask = (title, completed) => {
 
 const updateTask =(id, title, completed) => {
     const updateEndPoint = [BASE_URL, postsPath, id].join('/');
-    const configObject = {
+    //  send it to server 
+    const options = {
         method: 'PUT',
         headers:
         {
@@ -84,8 +85,8 @@ const updateTask =(id, title, completed) => {
             completed
         })
     };
-
-    fetch(updateEndPoint, configObject)
+    //  fetch(URL, option)
+    fetch(updateEndPoint, options)
         .then((response) => {
             return response.json();
         });
@@ -104,28 +105,22 @@ const render = (tmp, element) => {
     element.innerHTML = tmp;
 };
 
-
+//  Render the task
 const renderTasks = (tasks, element) => {
-    const tmp =
-        tasks = tasks
-                .map(task => generateTaskEntry(task, DomSelectors.taskSection))
-                .join('');
-
-    element = render(tmp, element);
-
+    const tmp = tasks = tasks.map(task => generateTaskEntry(task, DomSelectors.taskSection)).join('');
+    render(tmp, element);
 };
 
 // TEMPLATE
 const generateTaskEntry = (task, { taskEntry, markedTaskEntry, title, edit, deleteTask }) => {
-    const switchElement = true ?
-        `<h3 id="title-click-${task.id}" style="cursor:grab">${task.title}</h3>` :
-        `<input type="text" id="input__box-edit-${task.id}" name="create-task" placeholder=${task.title}/>`;
-    console.log(switchElement);
+    // const switchElement = true ?
+    //     `<h3 id="title-click-${task.id}" style="cursor:pointer">${task.title}</h3>` :
+    //     `<input type="text" id="input__box-edit-${task.id}" name="create-task" placeholder=${task.title}/>`;
 
     return ` 
         <section class= "${taskEntry}" style= "${task.completed ? "text-decoration: line-through;" : null}">
             <div class="${title}" id="div-${task.id}">
-                <h3 id="title-click-${task.id}" style="cursor:grab">${task.title}</h3>
+                <h3 id="title-click-${task.id}" style="cursor:pointer">${task.title}</h3>
             </div>
 
             <div class="${edit}"  style="${task.completed ? "display: none" : null}" >
@@ -147,10 +142,10 @@ const generateTaskEntry = (task, { taskEntry, markedTaskEntry, title, edit, dele
     `;
 };
 
-
-const setUpCardsEventInputBox = cardsElement => {
+const setUpCardsEventInputBox = (cardsElement) => {
     cardsElement.addEventListener('click', event => {
         const inputVal = document.getElementById("input__box").value;
+        // optional chaining
         if (event?.target?.id?.startsWith('input__submit')) {
             createTask(inputVal, false);
             window.location.reload();
@@ -176,7 +171,7 @@ const setUpCardsEventTaskEntry = (cardsElement) => {
              document.getElementById(`div-${id}`).innerHTML = editBox;
 
         }
-        //  Completed
+        //  Complete
         if (event.target.id.startsWith('title-click')) {
             const id = event.target.id.substring(12);
             const task = taskList.tasks.find(val => val.id == id);
@@ -187,7 +182,7 @@ const setUpCardsEventTaskEntry = (cardsElement) => {
     });
     // Submit
     cardsElement.addEventListener('keyup', event => {
-        console.log(event.target).value;
+        console.log(event.target.value);
         if (event.target.id.startsWith('input__box-edit-') && event.keyCode === 13) {
             event.preventDefault();
             event.stopImmediatePropagation();
