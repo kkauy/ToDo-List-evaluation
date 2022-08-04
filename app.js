@@ -52,6 +52,7 @@ const sortTasks = (taskList) => {
 
 const createTask = (title, completed) => {
     const postsEndPoint = [BASE_URL, postsPath].join('/');
+    // option     
     const configObject = {
         method: 'POST',
         headers:
@@ -64,6 +65,7 @@ const createTask = (title, completed) => {
             completed
         })
     };
+    // (URL,option)     
     fetch(postsEndPoint, configObject)
         .then((response) => {
             return response.json();
