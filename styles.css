@@ -13,12 +13,12 @@ html {
 }
 
 :root {
-  --white: #f0f0f0;
-  --blue: #008cba;
-  --red: #c94c4c;
   --tan: #e6e2d3;
+  --red: #c94c4c;
   --yellow-green: #4caf50;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  --blue: #008cba;
+  --white: #f0f0f0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1{
@@ -31,11 +31,11 @@ h1{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 8rem;
 }
 
 #input__submit {
-  border-radius: 3rem;
+  border-radius: 2rem;
   margin-left: 2%;
   width: 8%;
   border: 0.1em solid var(--blue);
@@ -52,6 +52,7 @@ h1{
   border-radius: 1rem;
   padding: 2rem;
 }
+
 
 .task__edit {
   margin-right: 1em;
@@ -76,7 +77,7 @@ h1{
   flex-direction: column;
   min-height: 50vh;
   margin-left: 6vw;
-  width: 55vw;
+  width: 50vw;
   margin-top: 5em;
   border: 0.3em solid var(--white);
   border-radius: 0.3em;
@@ -87,13 +88,13 @@ h1{
   display: flex;
   flex-direction: row;
   height: 3rem;
-  border: 0.1em solid var(--tan);
+  border: 0.2em solid var(--tan);
   border-radius: 0.3em;
-  background-color: var(--tan);
   margin-top: 1em;
   width: 90%;
   margin-left: 5%;
   margin-bottom: 2%;
+  background-color: var(--tan);
 }
 
 .task__entry-marked {
@@ -101,14 +102,12 @@ h1{
   flex-direction: row;
   height: 3rem;
   border: 0.1em solid var(--tan);
-  border-radius: 0.3em;
-  background-color: var(--tan);
   margin-top: 1em;
-  width: 90%;
+  width: 80%;
   margin-left: 5%;
+  background-color: var(--tan);
   text-decoration: line-through;
   margin-bottom: 2%;
-
 }
 
 .task__list {
@@ -118,15 +117,10 @@ h1{
   min-height: 15rem;
   flex-direction: column;
   margin-top: 5rem;
-  border-radius: 1rem;
   border: 0.3rem solid var(--white);
   background-color: var(--white);
 }
 
-.task__title {
-  flex: 6;
-  margin-right: 1em;
-}
 
 .task__title {
   height: 100%;
@@ -134,14 +128,15 @@ h1{
   font-size: 1.3em;
   line-height: 2;
   border: none;
+  flex: 10; 
+  margin-right: 1em;
 }
 
 .task__edit {
   margin-right: 1em;
   align-self: center;
-  width: 2.2em;
-  height: 2.2em;
-  border-radius: 0.2em;
+  width: 2.22em;
+  height: 2.22em;
   background-color: var(--blue);
   cursor: pointer;
 }
@@ -149,9 +144,8 @@ h1{
 .task__delete {
   margin-right: 1em;
   align-self: center;
-  width: 2.2em;
-  height: 2.2em;
-  border-radius: 0.2em;
+  width: 2.22em;
+  height: 2.22em;
   background-color: var(--red);
   cursor: pointer;
 }
